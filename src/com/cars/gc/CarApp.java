@@ -1,3 +1,10 @@
+/*            *             ====================================================                                                                                                            ***                      ====================================================
+*            ***            # Name: Jiao Xu
+*           *****           # Date: 5/7/2018
+*            ***            # Project Name: Lab 11
+*             *             # Description: Here is my Car List program.
+*                           ====================================================
+ */
 package com.cars.gc;
 
 import java.util.ArrayList;
@@ -12,30 +19,29 @@ public class CarApp {
 
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome to the Grand Circus Motors admin console!");
-		System.out.println("How many cars are you entering: ");
-		carNum = scan.nextInt();
-		scan.nextLine();
+		carNum = Validator.getInt(scan, "How many cars are you entering: ");
+	
 
 		for (int i = 1; i <= carNum; i++) {
 			NewCar thisCar = new NewCar();
-			System.out.println("Enter Car #" + i + " Make: ");
-			thisCar.setMake(scan.nextLine());
-			System.out.println("Enter Car #" + i + " Model: ");
-			thisCar.setModel(scan.nextLine());
-			System.out.println("Enter Car #" + i + " Year: ");
-			thisCar.setYear(scan.nextInt());
-			System.out.println("Enter Car #" + i + " Price: ");
-			thisCar.setPrice(scan.nextDouble());
+			thisCar.setMake(Validator.getString(scan, "Enter Car #" + i + " Make: "));
+			
+			thisCar.setModel(Validator.getString(scan, "Enter Car #" + i + " Model: "));
+		
+			thisCar.setYear(Validator.getInt(scan, "Enter Car #" + i + " Year: "));
+		
+			thisCar.setPrice(Validator.getDouble(scan, "Enter Car #" + i + " Price: "));
 			System.out.println();
+			
 			inventory.add(thisCar);
-			scan.nextLine();
+	
 		}
 		System.out.println("Current Inventory:");
 
-		// for (int i = 1; i <= carNum; i++) {
-		System.out.println(inventory);
+		for (int i = 0; i < inventory.size(); i++) {
+			System.out.println(inventory.get(i));
 
-		// }
+		}
 		scan.close();
 	}
 }
